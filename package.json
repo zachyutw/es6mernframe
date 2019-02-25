@@ -11,7 +11,7 @@
         "dev-start": "nodeman ./server.js --exec babel-node",
         "dev": "concurrently \"npm run start\" \"npm run client\"",
         "client": "cd client && yarn start",
-        "start": "babel-node dist/server.js",
+        "start": "babel dist/server.js",
         "test": "nodemon --exec 'mocha --compilers js:babel-core/register -R min' ",
         "lint": "eslint .",
         "heroku-postbuild": "cd client && yarn && yarn run build",
@@ -26,11 +26,7 @@
         "type": "git",
         "url": "git+https://github.com/tomyitav/express-es6-starter.git"
     },
-    "keywords": [
-        "Node.js",
-        "Javascript",
-        "Express"
-    ],
+    "keywords": [ "Node.js", "Javascript", "Express" ],
     "author": "Zach Yu <zachyu.tw@gmail.com>",
     "dependencies": {
         "@google/maps": "^0.5.5",
@@ -103,10 +99,7 @@
     },
     "eslintConfig": {
         "parser": "babel-eslint",
-        "extends": [
-            "airbnb/base",
-            "plugin:import/errors"
-        ],
+        "extends": [ "airbnb/base", "plugin:import/errors" ],
         "rules": {
             "no-use-before-define": 0,
             "arrow-body-style": 0,
