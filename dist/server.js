@@ -94,14 +94,14 @@ var serverPath = exports.serverPath = function serverPath() {
 };
 var jwtSecrect = 'lasfu';
 //* passport setup
-var port = _config2.default.serverPort;
+var port = _config2.default.PORT;
 _appLogger2.default.stream = {
     write: function write(message, encoding) {
         // console.log(encoding);
         _appLogger2.default.info(message);
     }
 };
-// connectToDb();
+(0, _connect2.default)();
 var app = (0, _express2.default)();
 app.use((0, _compression2.default)());
 app.use(_bodyParser2.default.json());
@@ -133,9 +133,11 @@ var sslOptions = {
     key: _fs2.default.readFileSync('./cert/server.key'),
     cert: _fs2.default.readFileSync('./cert/server.cer')
 };
+
 // const server = https.createServer(sslOptions, app);
 
 var server = _http2.default.createServer(app);
 server.listen(port, function () {
+    console.log(process.env);
     _appLogger2.default.info('server started - ', port);
 });

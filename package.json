@@ -8,13 +8,13 @@
     "description": "Seed project for easily getting started with express for es6",
     "scripts": {
         "clean": "rm -rf dist",
-        "dev-start": "nodeman ./server.js --exec babel-node",
-        "dev": "concurrently \"npm run start\" \"npm run client\"",
+        "dev": "concurrently \"nodemon ./server.js --exec babel-node\" \"yarn client\"",
         "client": "cd client && yarn start",
         "start": "node ./dist/server.js",
         "serve": "yarn build-server && node ./dist/server.js",
         "test": "nodemon --exec 'mocha --compilers js:babel-core/register -R min' ",
         "lint": "eslint .",
+
         "heroku-postbuild": "yarn build-server && cd client && yarn && yarn build",
         "build-server": "yarn clean && babel . -d dist --presets es2015,stage-2 --ignore spec.js,node_modules,client,dist",
         "build-client": "cd client && yarn && yarn build",

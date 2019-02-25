@@ -26,14 +26,14 @@ export const serverPath = () =>
     __dirname.indexOf('/dist') > 0 ? __dirname.slice(0, __dirname.indexOf('/dist')) : __dirname;
 const jwtSecrect = 'lasfu';
 //* passport setup
-const port = config.serverPort;
+const port = config.PORT;
 logger.stream = {
     write: function (message, encoding){
         // console.log(encoding);
         logger.info(message);
     }
 };
-// connectToDb();
+connectToDb();
 const app = express();
 app.use(compression());
 app.use(bodyParser.json());
@@ -67,6 +67,7 @@ const sslOptions = {
     key: fs.readFileSync('./cert/server.key'),
     cert: fs.readFileSync('./cert/server.cer')
 };
+
 // const server = https.createServer(sslOptions, app);
 
 const server = http.createServer(app);
