@@ -11,7 +11,7 @@
         "dev-start": "nodeman ./server.js --exec babel-node",
         "dev": "concurrently \"npm run start\" \"npm run client\"",
         "client": "cd client && yarn start",
-        "start": "babel dist/server.js",
+        "start": "babel-cli dist/server.js",
         "test": "nodemon --exec 'mocha --compilers js:babel-core/register -R min' ",
         "lint": "eslint .",
         "heroku-postbuild": "cd client && yarn && yarn run build",
