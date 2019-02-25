@@ -1,0 +1,9 @@
+.innerHtml {
+	position: relative;
+	text-align: center;
+}
+
+.innerHtml p {
+	font-size: 16px;
+	color: #999;
+}

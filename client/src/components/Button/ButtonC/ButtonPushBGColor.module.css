@@ -1,0 +1,18 @@
+.btn.selected {
+	color: red !important;
+	background-position: right bottom !important;
+	transition: all 300ms ease-in-out;
+}
+
+.btn {
+	background: none !important;
+	background: linear-gradient(to right, blue 33%, #fff 33% 67%, blue 67% 100%) !important;
+	background-size: 300% 100% !important;
+	background-position: center bottom !important;
+}
+
+.btn.rightBtn.selected {
+	color: #fff !important;
+	background-position: left bottom !important;
+	transition: all 300ms ease-in-out;
+}

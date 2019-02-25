@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "engines": {
         "node": "11.6.0",
-        "npm": "6.5.0"
+        "npm": "6.5.0-next.0"
     },
     "description": "Seed project for easily getting started with express for es6",
     "scripts": {

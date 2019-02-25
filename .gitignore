@@ -37,14 +37,7 @@ node_modules
 # Optional REPL history
 .node_repl_history
 /yarn.lock
-/client/yarn.lock
-/client
-client
-package-lock.json
+
 .vscode
 .vscode
-yarn.lock
-client/*
-client/*.*
 public/images/uploads/*
-.env
