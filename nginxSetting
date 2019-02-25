@@ -1,0 +1,62 @@
+##
+#
+##
+
+# Virtualhost config for mobile website
+#
+server {
+
+    server_name dev.lasfu.roro3.com;
+    #root /var/www/lasfu-web-dev;
+    #index index.html;
+
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_min_length 256;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/vnd.ms-fontobject application/x-font-ttf;
+
+    location ~* \.io {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_set_header X-Real-IP $remote_addr;                       # 加入 X-Real-IP Header
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;   # 加入 X-Forwarded-For Header
+        proxy_redirect off;
+    }
+
+
+    location / {
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;                       # 加入 X-Real-IP Header
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;   # 加入 X-Forwarded-For Header
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        gzip on;
+        gzip_proxied any;
+        gzip_static on;
+        add_header Cache-Control public;
+        root html;
+        index index.html index.htm;
+        
+    }
+ 
+    listen 80; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.lasfu.roro3.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.lasfu.roro3.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}

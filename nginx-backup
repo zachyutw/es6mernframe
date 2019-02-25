@@ -1,0 +1,33 @@
+##
+#
+##
+
+# Virtualhost config for mobile website
+#
+server {
+
+        server_name dev.lasfu.roro3.com;
+
+        #root /var/www/lasfu-web-dev;
+        #index index.html;
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+            root html;
+            index index.html index.htm;
+            #try_files $uri $uri/ =404;
+            #try_files $uri /index.html;
+        }
+
+
+
+    listen 80; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.lasfu.roro3.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.lasfu.roro3.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
