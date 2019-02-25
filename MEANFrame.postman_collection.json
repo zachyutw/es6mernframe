@@ -1,931 +1,931 @@
 {
-	"info": {
-		"_postman_id": "60007140-b34e-47b2-bd9f-0b8c52b0b07c",
-		"name": "MEANFrame",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "asset",
-			"item": [
-				{
-					"name": "/asset/files",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "files",
-									"type": "file",
-									"src": ""
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseURL}}/asset/list",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "asset", "list" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/asset/images",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "images",
-									"type": "file",
-									"src": ""
-								},
-								{
-									"key": "tagsList",
-									"value": "test,123",
-									"type": "text"
-								},
-								{
-									"key": "images",
-									"type": "file",
-									"src": ""
-								},
-								{
-									"key": "tagsList",
-									"value": "test,123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseURL}}/asset/images?images",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "asset", "images" ],
-							"query": [
-								{
-									"key": "images",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/asset/images",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"images\": [\n        {\n            \"imageUrl\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNS1mbG9vcl90ZXh0dXJlXzI=.png\",\n            \"thumbnail\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNS1mbG9vcl90ZXh0dXJlXzI=.png\",\n            \"tags\": \"test,123\"\n        },\n        {\n            \"imageUrl\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNy1mbG9vcl90ZXh0dXJlXzE=.png\",\n            \"thumbnail\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNy1mbG9vcl90ZXh0dXJlXzE=.png\",\n            \"tags\": \"test,123\"\n        }\n    ]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/asset/images",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "asset", "images" ]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "/auth/account",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenNode}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"display\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/account",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "account" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/account",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenNode}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"password\":\"12345\",\n\t\"newPassword\":\"1234\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/account",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "account" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/email/signUp",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\":\"tw1000@tw.com\",\n\t\"password\":\"1234\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/email/signUp",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "email", "signUp" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/account/signIn",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\":\"tw1000@tw.com\",\n\t\"password\":\"1234\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/account/signIn",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "account", "signIn" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/password",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenNode}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"password\":\"1234\",\n\t\"newPassword\":\"12345\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/account",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "account" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "displayName",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/auth/account/chatrooms",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenNode}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"chatroomId\":\"5c1099a7bd7be8bf034b44d9\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/account/chatrooms?populate=chatrooms",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "auth", "account", "chatrooms" ],
-							"query": [
-								{
-									"key": "populate",
-									"value": "chatrooms"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "user",
-			"item": [
-				{
-					"name": "/user/list",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list?",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username,displayName",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/list",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga205@a.b\",\"password\":\"1234\"},{\"username\":\"jinga207@a.b\",\"password\":\"1234\"},{\"username\":\"jinga208@a.b\",\"password\":\"1234\"}\n\t]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list?select=username",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/list",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/list",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[{\"id\":\"5c05ee10feb5f8828287df75\",\"displayName\":\"test6\"},{\"id\":\"5c05ee10feb5f8828287df76\",\"displayName\":\"test5\"}]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/list/ids",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"ids\":[\"5c05ee10feb5f8828287df75\"]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list/ids?select=username",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list", "ids" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/item",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/item",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\":{\"username\":\"jinga300@a.b\",\"password\":\"1234\"}\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/item",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "item" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/item",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test3\"\n\t}\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7?select=username",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ],
-							"query": [
-								{
-									"key": "id",
-									"value": "5c0b65cec91d7591b09a8de7",
-									"disabled": true
-								},
-								{
-									"key": "select",
-									"value": "username"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/item",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "chatroom",
-			"item": [
-				{
-					"name": "/chatroom/list",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/list?",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "targetUser,hostUser",
-									"disabled": true
-								},
-								{
-									"key": "populate",
-									"value": "hostUser,targetUser",
-									"disabled": true
-								},
-								{
-									"key": "$hostUser",
-									"value": "username",
-									"description": "deepSelects",
-									"disabled": true
-								},
-								{
-									"key": "sort",
-									"value": "updatedAt",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "0",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "10",
-									"disabled": true
-								},
-								{
-									"key": "isRead",
-									"value": "false",
-									"description": "whereQueries",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/list",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/list",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "targetUser,hostUser",
-									"disabled": true
-								},
-								{
-									"key": "populate",
-									"value": "hostUser,targetUser",
-									"disabled": true
-								},
-								{
-									"key": "$hostUser",
-									"value": "username",
-									"disabled": true
-								},
-								{
-									"key": "sort",
-									"value": "updatedAt",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "0",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "10",
-									"disabled": true
-								},
-								{
-									"key": "isRead",
-									"value": "false",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/list",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/list",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "targetUser,hostUser",
-									"disabled": true
-								},
-								{
-									"key": "populate",
-									"value": "hostUser,targetUser",
-									"disabled": true
-								},
-								{
-									"key": "$hostUser",
-									"value": "username",
-									"disabled": true
-								},
-								{
-									"key": "sort",
-									"value": "updatedAt",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "0",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "10",
-									"disabled": true
-								},
-								{
-									"key": "isRead",
-									"value": "false",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/list",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"users\":[{\"id\":\"5c05ee10feb5f8828287df75\",\"displayName\":\"test2\"}]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/list/ids?select=username",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "list", "ids" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/list/ids",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"ids\":[\"5c05ee10feb5f8828287df75\"]\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/list/ids?select=username",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "list", "ids" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/item",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/item/5c0b65cec91d7591b09a8de7",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "item", "5c0b65cec91d7591b09a8de7" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/item",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{tokenNode}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"targetUserId\":\"5c0e094cd35218b18b31d978\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/item",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "item" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/item",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/chatroom/item/5c0b65cec91d7591b09a8de7",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "chatroom", "item", "5c0b65cec91d7591b09a8de7" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/chatroom/item",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/user/list",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/user/list?",
-							"host": [ "{{baseURL}}" ],
-							"path": [ "user", "list" ],
-							"query": [
-								{
-									"key": "select",
-									"value": "username,displayName",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+    "info": {
+        "_postman_id": "60007140-b34e-47b2-bd9f-0b8c52b0b07c",
+        "name": "MEANFrame",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "asset",
+            "item": [
+                {
+                    "name": "/asset/files",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "files",
+                                    "type": "file",
+                                    "src": ""
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/asset/list",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "asset", "list" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/asset/images",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "images",
+                                    "type": "file",
+                                    "src": ""
+                                },
+                                {
+                                    "key": "tagsList",
+                                    "value": "test,123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "images",
+                                    "type": "file",
+                                    "src": ""
+                                },
+                                {
+                                    "key": "tagsList",
+                                    "value": "test,123",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/asset/images?images",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "asset", "images" ],
+                            "query": [
+                                {
+                                    "key": "images",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/asset/images",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"images\": [\n        {\n            \"imageUrl\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNS1mbG9vcl90ZXh0dXJlXzI=.png\",\n            \"thumbnail\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNS1mbG9vcl90ZXh0dXJlXzI=.png\",\n            \"tags\": \"test,123\"\n        },\n        {\n            \"imageUrl\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNy1mbG9vcl90ZXh0dXJlXzE=.png\",\n            \"thumbnail\": \"http://localhost:5000/api/public/upload/images/MTU0MzgxNDk5NzEzNy1mbG9vcl90ZXh0dXJlXzE=.png\",\n            \"tags\": \"test,123\"\n        }\n    ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/asset/images",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "asset", "images" ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "auth",
+            "item": [
+                {
+                    "name": "/auth/account",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{tokenNode}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"display\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/account",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "account" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/account",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{tokenNode}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"password\":\"12345\",\n\t\"newPassword\":\"1234\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/account",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "account" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/email/signUp",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"email\":\"tw1000@tw.com\",\n\t\"password\":\"1234\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/email/signUp",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "email", "signUp" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/account/signIn",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"email\":\"tw1000@tw.com\",\n\t\"password\":\"1234\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/account/signIn",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "account", "signIn" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/password",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{tokenNode}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"password\":\"1234\",\n\t\"newPassword\":\"12345\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/account",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "account" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "displayName",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/auth/account/chatrooms",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{tokenNode}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"chatroomId\":\"5c1099a7bd7be8bf034b44d9\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/auth/account/chatrooms?populate=chatrooms",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "auth", "account", "chatrooms" ],
+                            "query": [
+                                {
+                                    "key": "populate",
+                                    "value": "chatrooms"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "user",
+            "item": [
+                {
+                    "name": "/user/list",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list?",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username,displayName",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/list",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga205@a.b\",\"password\":\"1234\"},{\"username\":\"jinga207@a.b\",\"password\":\"1234\"},{\"username\":\"jinga208@a.b\",\"password\":\"1234\"}\n\t]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list?select=username",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/list",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/list",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[{\"id\":\"5c05ee10feb5f8828287df75\",\"displayName\":\"test6\"},{\"id\":\"5c05ee10feb5f8828287df76\",\"displayName\":\"test5\"}]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/list/ids",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"ids\":[\"5c05ee10feb5f8828287df75\"]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list/ids?select=username",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list", "ids" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/item",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/item",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user\":{\"username\":\"jinga300@a.b\",\"password\":\"1234\"}\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/item",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "item" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/item",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test3\"\n\t}\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7?select=username",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "5c0b65cec91d7591b09a8de7",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "select",
+                                    "value": "username"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/item",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "chatroom",
+            "item": [
+                {
+                    "name": "/chatroom/list",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/list?",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "targetUser,hostUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "populate",
+                                    "value": "hostUser,targetUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "$hostUser",
+                                    "value": "username",
+                                    "description": "deepSelects",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "updatedAt",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "0",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "10",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "isRead",
+                                    "value": "false",
+                                    "description": "whereQueries",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/list",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/list",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "targetUser,hostUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "populate",
+                                    "value": "hostUser,targetUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "$hostUser",
+                                    "value": "username",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "updatedAt",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "0",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "10",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "isRead",
+                                    "value": "false",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/list",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[\n\t\t{\"username\":\"jinga01@a.b\",\"password\":\"1234\"},{\"username\":\"jinga02@a.b\",\"password\":\"1234\"},{\"username\":\"jinga03@a.b\",\"password\":\"1234\"}\n\t]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/list",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "targetUser,hostUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "populate",
+                                    "value": "hostUser,targetUser",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "$hostUser",
+                                    "value": "username",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "updatedAt",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "0",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "10",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "isRead",
+                                    "value": "false",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/list",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"users\":[{\"id\":\"5c05ee10feb5f8828287df75\",\"displayName\":\"test2\"}]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/list/ids?select=username",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "list", "ids" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/list/ids",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"ids\":[\"5c05ee10feb5f8828287df75\"]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/list/ids?select=username",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "list", "ids" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/item",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/item/5c0b65cec91d7591b09a8de7",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "item", "5c0b65cec91d7591b09a8de7" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/item",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{tokenNode}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"targetUserId\":\"5c0e094cd35218b18b31d978\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/item",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "item" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/item",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/chatroom/item/5c0b65cec91d7591b09a8de7",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "chatroom", "item", "5c0b65cec91d7591b09a8de7" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/chatroom/item",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "type": "text",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user\":{\n\t\t\"displayName\": \"test\"\n\t}\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/item/5c0b65cec91d7591b09a8de7",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "item", "5c0b65cec91d7591b09a8de7" ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/user/list",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "{{baseURL}}/user/list?",
+                            "host": [ "{{baseURL}}" ],
+                            "path": [ "user", "list" ],
+                            "query": [
+                                {
+                                    "key": "select",
+                                    "value": "username,displayName",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
 }

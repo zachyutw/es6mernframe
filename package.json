@@ -15,7 +15,7 @@
         "serve": "yarn build-server && node ./dist/server.js",
         "test": "nodemon --exec 'mocha --compilers js:babel-core/register -R min' ",
         "lint": "eslint .",
-        "heroku-postbuild": "cd client && yarn && yarn run build",
+        "heroku-postbuild": "yarn build-server && cd client && yarn && yarn build",
         "build-server": "yarn clean && babel . -d dist --presets es2015,stage-2 --ignore spec.js,node_modules,client,dist",
         "build-client": "cd client && yarn && yarn build",
         "build": "yarn && yarn build-server && yarn build-client "

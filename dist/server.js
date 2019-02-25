@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 exports.serverPath = undefined;
 
@@ -90,27 +90,27 @@ _dotenv2.default.load();
 console.log(process.env.domainName);
 //? generatro a path which always pooint to corrent root directoriy
 var serverPath = exports.serverPath = function serverPath() {
-	return __dirname.indexOf('/dist') > 0 ? __dirname.slice(0, __dirname.indexOf('/dist')) : __dirname;
+    return __dirname.indexOf('/dist') > 0 ? __dirname.slice(0, __dirname.indexOf('/dist')) : __dirname;
 };
 var jwtSecrect = 'lasfu';
 //* passport setup
 var port = _config2.default.serverPort;
 _appLogger2.default.stream = {
-	write: function write(message, encoding) {
-		// console.log(encoding);
-		_appLogger2.default.info(message);
-	}
+    write: function write(message, encoding) {
+        // console.log(encoding);
+        _appLogger2.default.info(message);
+    }
 };
-(0, _connect2.default)();
+// connectToDb();
 var app = (0, _express2.default)();
 app.use((0, _compression2.default)());
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ extended: true }));
 app.use((0, _morgan2.default)('dev', { stream: _appLogger2.default.stream }));
 app.use((0, _cookieSession2.default)({
-	//! d    hh    mm  ss
-	maxAge: 1 * 24 * 60 * 60 * 1000,
-	keys: jwtSecrect
+    //! d    hh    mm  ss
+    maxAge: 1 * 24 * 60 * 60 * 1000,
+    keys: jwtSecrect
 }));
 
 (0, _passport4.default)();
@@ -126,16 +126,16 @@ var serverPathUrl = serverPath();
 app.use('/', _express2.default.static(_path2.default.resolve(serverPathUrl, 'client', 'build'), { maxAge: oneYear }));
 
 app.get('*', function (req, res) {
-	res.sendFile(_path2.default.resolve(serverPathUrl, 'client', 'build', 'index.html'));
+    res.sendFile(_path2.default.resolve(serverPathUrl, 'client', 'build', 'index.html'));
 });
 // app.use('/',expressStaticGzip(path.resolve(serverPathUrl, 'client', 'dist')));
 var sslOptions = {
-	key: _fs2.default.readFileSync('./cert/server.key'),
-	cert: _fs2.default.readFileSync('./cert/server.cer')
+    key: _fs2.default.readFileSync('./cert/server.key'),
+    cert: _fs2.default.readFileSync('./cert/server.cer')
 };
 // const server = https.createServer(sslOptions, app);
 
 var server = _http2.default.createServer(app);
 server.listen(port, function () {
-	_appLogger2.default.info('server started - ', port);
+    _appLogger2.default.info('server started - ', port);
 });

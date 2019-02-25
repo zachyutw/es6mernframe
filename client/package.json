@@ -43,7 +43,7 @@
         "build": "react-scripts build",
         "test": "if CI=true react-scripts test --coverage --env=jsdom; then echo '✅ Unit test run success'; else echo '❌ Unit test run failure'; exit 1; fi",
         "eject": "react-scripts eject",
-        "functional::local": "npm run start:selenium && codeceptjs run --steps --config=./codecept/local.config.js",
+        "functional::local": "npm run start:selenium",
         "start:selenium": "selenium-standalone start > /dev/null 2>&1 &",
         "kill:selenium": "lsof -t -i :4444 | xargs kill"
     },
@@ -91,7 +91,6 @@
         "@applitools/eyes.webdriverio": "^2.0.1",
         "@fortawesome/fontawesome-free": "^5.7.1",
         "@types/jest": "^24.0.5",
-        "codeceptjs": "^2.0.4",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.9.1",
         "enzyme-to-json": "^3.3.5",
