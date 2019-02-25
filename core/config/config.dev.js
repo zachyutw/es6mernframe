@@ -1,6 +1,6 @@
 import path from 'path';
 
-const PORT = 5000;
+const PORT = 80;
 let config = {};
 
 config.logFileDir = path.join(__dirname, '../../log');
