@@ -23,28 +23,28 @@ dotenv.load();
 console.log(process.env.domainName);
 //? generatro a path which always pooint to corrent root directoriy
 export const serverPath = () =>
-	__dirname.indexOf('/dist') > 0 ? __dirname.slice(0, __dirname.indexOf('/dist')) : __dirname;
+    __dirname.indexOf('/dist') > 0 ? __dirname.slice(0, __dirname.indexOf('/dist')) : __dirname;
 const jwtSecrect = 'lasfu';
 //* passport setup
 const port = config.serverPort;
 logger.stream = {
-	write: function (message, encoding) {
-		// console.log(encoding);
-		logger.info(message);
-	}
+    write: function (message, encoding){
+        // console.log(encoding);
+        logger.info(message);
+    }
 };
-connectToDb();
+// connectToDb();
 const app = express();
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev', { stream: logger.stream }));
 app.use(
-	cookieSession({
-		//! d    hh    mm  ss
-		maxAge: 1 * 24 * 60 * 60 * 1000,
-		keys: jwtSecrect
-	})
+    cookieSession({
+        //! d    hh    mm  ss
+        maxAge: 1 * 24 * 60 * 60 * 1000,
+        keys: jwtSecrect
+    })
 );
 
 Passport();
@@ -60,16 +60,16 @@ const serverPathUrl = serverPath();
 app.use('/', express.static(path.resolve(serverPathUrl, 'client', 'build'), { maxAge: oneYear }));
 
 app.get('*', (req, res) => {
-	res.sendFile(path.resolve(serverPathUrl, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(serverPathUrl, 'client', 'build', 'index.html'));
 });
 // app.use('/',expressStaticGzip(path.resolve(serverPathUrl, 'client', 'dist')));
 const sslOptions = {
-	key: fs.readFileSync('./cert/server.key'),
-	cert: fs.readFileSync('./cert/server.cer')
+    key: fs.readFileSync('./cert/server.key'),
+    cert: fs.readFileSync('./cert/server.cer')
 };
 // const server = https.createServer(sslOptions, app);
 
 const server = http.createServer(app);
 server.listen(port, () => {
-	logger.info('server started - ', port);
+    logger.info('server started - ', port);
 });
