@@ -2,6 +2,7 @@
   "compact": false,
   "passPerPreset": true,
   "presets": [
+    "env",
     "react",
     "es2015",
     "stage-0"
