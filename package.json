@@ -14,7 +14,7 @@
         "start": "babel-node dist/server.js",
         "test": "nodemon --exec 'mocha --compilers js:babel-core/register -R min' ",
         "lint": "eslint .",
-        "heroku-postbuild": "npm install babel-cli -S && cd client && yarn && yarn run build",
+        "heroku-postbuild": "cd client && yarn && yarn run build",
         "build-server": "yarn clean && babel . -d dist --presets es2015,stage-2 --ignore spec.js,node_modules,client,dist",
         "build-client": "cd client && yarn && yarn build",
         "build": "yarn && yarn build-server && yarn build-client "
@@ -26,11 +26,16 @@
         "type": "git",
         "url": "git+https://github.com/tomyitav/express-es6-starter.git"
     },
-    "keywords": [ "Node.js", "Javascript", "Express" ],
+    "keywords": [
+        "Node.js",
+        "Javascript",
+        "Express"
+    ],
     "author": "Zach Yu <zachyu.tw@gmail.com>",
     "dependencies": {
         "@google/maps": "^0.5.5",
         "axios": "^0.18.0",
+        "babel": "^6.23.0",
         "bcrypt-nodejs": "^0.0.3",
         "body-parser": "^1.18.3",
         "chai": "^4.1.2",
@@ -76,7 +81,7 @@
         "ws": "^6.0.0"
     },
     "devDependencies": {
-        "babel-cli": "6.16.0",
+        "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-eslint": "9.0.0",
         "babel-jest": "^23.6.0",
@@ -98,7 +103,10 @@
     },
     "eslintConfig": {
         "parser": "babel-eslint",
-        "extends": [ "airbnb/base", "plugin:import/errors" ],
+        "extends": [
+            "airbnb/base",
+            "plugin:import/errors"
+        ],
         "rules": {
             "no-use-before-define": 0,
             "arrow-body-style": 0,
