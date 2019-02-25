@@ -138,6 +138,5 @@ var sslOptions = {
 
 var server = _http2.default.createServer(app);
 server.listen(port, function () {
-    console.log(process.env);
     _appLogger2.default.info('server started - ', port);
 });
