@@ -1,26 +1,18 @@
 import Mongoose from 'mongoose';
-import logger from '../core/logger/app-logger'
-import config from '../core/config/config.dev'
+import logger from '../core/logger/app-logger';
+import config from '../core/config/config.dev';
 
-import combineSeeds from './seed/combineSeeds';
 Mongoose.Promise = global.Promise;
-
-
-
-
+Mongoose.set('useFindAndModify', false);
 const connectToDb = async () => {
-    let dbHost = config.dbHost;
-    let dbPort = config.dbPort;
-    let dbName = config.dbName;
+    let mongoDBConnection = config.mongoDBConnection;
     try {
-        await Mongoose.connect(`mongodb://${dbHost}:${dbPort}/${dbName}`, { useMongoClient: true });
+        await Mongoose.connect(mongoDBConnection, { useCreateIndex: true, useNewUrlParser: true });
         logger.info('Connected to mongo!!!');
-        // combineSeeds(); 
-
-    }
-    catch (err) {
+        // combineSeeds();
+    } catch (err) {
         logger.error('Could not connect to MongoDB');
     }
-}
+};
 
 export default connectToDb;

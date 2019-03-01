@@ -1,6 +1,6 @@
-import * as winston from 'winston'
-import * as rotate from 'winston-daily-rotate-file'
-import config from '../config/config.dev'
+import * as winston from 'winston';
+import * as rotate from 'winston-daily-rotate-file';
+import config from '../config/config.dev';
 import * as fs from 'fs';
 
 const dir = config.logFileDir;
@@ -9,12 +9,11 @@ if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
 }
 
-
-let logger = new winston.Logger({
+let logger = new winston.createLogger({
     level: 'info',
     transports: [
-        new (winston.transports.Console)({
-            colorize: true,
+        new winston.transports.Console({
+            colorize: true
         }),
         new winston.transports.DailyRotateFile({
             filename: config.logFileName,

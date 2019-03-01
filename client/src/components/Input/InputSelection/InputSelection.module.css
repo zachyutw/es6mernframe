@@ -11,7 +11,7 @@
 .validMessage {
     position: absolute;
     top: 0.5em;
-    right: 0.5em;
+    right: 2em;
     z-index: 1;
     color: #9f3a38;
 }

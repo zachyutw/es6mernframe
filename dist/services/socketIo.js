@@ -38,7 +38,7 @@ exports.default = function (app) {
                 io.to(data.room).emit('add', data);
                 _appLogger2.default.info('room ' + data.room + ' user ' + data.id + ' connected ');
             } else {
-                socket.emit('loginFail', "");
+                socket.emit('loginFail', '');
             }
             // console.log(`${users.length} users connect`);
         });

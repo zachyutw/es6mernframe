@@ -30,7 +30,7 @@ if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
 }
 
-var logger = new winston.Logger({
+var logger = new winston.createLogger({
     level: 'info',
     transports: [new winston.transports.Console({
         colorize: true

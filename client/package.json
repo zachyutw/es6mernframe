@@ -48,45 +48,28 @@
         "kill:selenium": "lsof -t -i :4444 | xargs kill"
     },
     "jest": {
-        "snapshotSerializers": [
-            "enzyme-to-json/serializer"
-        ],
+        "snapshotSerializers": [ "enzyme-to-json/serializer" ],
         "collectCoverageFrom": [
             "src/**/*.js",
             "!src/__tests__/**/*",
             "!src/__e2e__/**/*",
             "!src/(App|index|serviceWorker|setupTests).js"
         ],
-        "coverageReporters": [
-            "text",
-            "lcov"
-        ]
+        "coverageReporters": [ "text", "lcov" ]
     },
     "standard": {
-        "ignore": [
-            "build/*",
-            "registerServiceWorker.js"
-        ],
+        "ignore": [ "build/*", "registerServiceWorker.js" ],
         "env": {
             "browser": true,
             "jest": true
         },
         "parser": "babel-eslint",
-        "globals": [
-            "actor",
-            "Feature",
-            "Scenario"
-        ]
+        "globals": [ "actor", "Feature", "Scenario" ]
     },
     "eslintConfig": {
         "extends": "react-app"
     },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ],
+    "browserslist": [ ">0.2%", "not dead", "not ie <= 11", "not op_mini all" ],
     "devDependencies": {
         "@applitools/eyes.webdriverio": "^2.0.1",
         "@fortawesome/fontawesome-free": "^5.7.1",

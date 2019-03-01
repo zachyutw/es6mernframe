@@ -34,7 +34,7 @@ _mongoose2.default.Promise = global.Promise;
 
 var connectToDb = function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
-        var dbHost, dbPort, dbName;
+        var dbHost, dbPort, dbName, mongoDBConnection;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -42,29 +42,29 @@ var connectToDb = function () {
                         dbHost = _config2.default.dbHost;
                         dbPort = _config2.default.dbPort;
                         dbName = _config2.default.dbName;
-                        _context.prev = 3;
-                        _context.next = 6;
-                        return _mongoose2.default.connect('mongodb://' + dbHost + ':' + dbPort + '/' + dbName, { useMongoClient: true });
+                        mongoDBConnection = _config2.default.mongoDBConnection;
+                        _context.prev = 4;
+                        _context.next = 7;
+                        return _mongoose2.default.connect(mongoDBConnection);
 
-                    case 6:
+                    case 7:
                         _appLogger2.default.info('Connected to mongo!!!');
-                        // combineSeeds(); 
-
-                        _context.next = 12;
+                        // combineSeeds();
+                        _context.next = 13;
                         break;
 
-                    case 9:
-                        _context.prev = 9;
-                        _context.t0 = _context['catch'](3);
+                    case 10:
+                        _context.prev = 10;
+                        _context.t0 = _context['catch'](4);
 
                         _appLogger2.default.error('Could not connect to MongoDB');
 
-                    case 12:
+                    case 13:
                     case 'end':
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[3, 9]]);
+        }, _callee, undefined, [[4, 10]]);
     }));
 
     return function connectToDb() {

@@ -1,9 +1,9 @@
 import path from 'path';
 
-const PORT = 5000;
+const PORT = process.env.NODE_ENV === 'production' ? 80 : 5000;
 let config = {};
 
-config.logFileDir = path.join(__dirname, '../../log');
+config.logFileDir = path.join(__dirname, './log');
 config.logFileName = 'app.log';
 config.dbHost = process.env.dbHost || 'localhost';
 config.dbPort = process.env.dbPort || '27017';

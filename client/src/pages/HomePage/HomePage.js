@@ -8,6 +8,7 @@ import GlobalContext from '../../context/global.context';
 import ProductItem from '../../components/Product/ProductItem/ProductItem';
 import ProductForm from '../../components/Product/ProductForm/ProductForm';
 import ButtonC from '../../components/Button/ButtonC/ButtonC';
+import InputAll from '../../components/Input/InputAll/InputAll';
 
 class HomePage extends React.Component {
     state = {};
@@ -31,8 +32,10 @@ class HomePage extends React.Component {
         // this.props.global.setLocales(this.props.global.i18.language === 'en' ? 'zh' : 'en');
         // this.props.global.setLocales((preState) => console.log(preState));
     };
+    hanldeOnChange = (event, data) => {
+        console.log(data);
+    };
     render () {
-        console.log(this.props);
         return (
             <Container>
                 <button style={{ color: 'red' }} />
@@ -43,17 +46,23 @@ class HomePage extends React.Component {
                     <Segment>
                         <ButtonC.Group fields={this.btnFields} />
                     </Segment>
-
-                    <Segment basic>
-                        <Button> Sign Up</Button>
-                        <Button> SignIn</Button>
-                        <Button> Sign Out</Button>
+                    <Segment>
+                        {/* <InputAll.Normal onChange={this.hanldeOnChange} placeholder='Home' t={this.props.t} /> */}
+                        <InputAll.Selection
+                            name='test'
+                            placeholder='Home'
+                            options={[
+                                { text: 'Default', value: null },
+                                { text: 'Home', value: 1 },
+                                { text: 'Website', value: 2 },
+                                { text: 'User', value: 3 },
+                                { text: 'Home', value: 4 }
+                            ]}
+                            onChange={this.hanldeOnChange}
+                            defaultValue={2}
+                            t={this.props.t}
+                        />
                     </Segment>
-                </Segment>
-
-                <Segment>
-                    <ProductItem.List />
-                    <ProductForm />
                 </Segment>
             </Container>
         );

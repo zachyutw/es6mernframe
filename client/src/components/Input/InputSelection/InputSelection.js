@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Input } from 'semantic-ui-react';
-import s from './InputNormal.module.css';
-const InputNormal = (props) => {
+import { Dropdown } from 'semantic-ui-react';
+import s from './InputSelection.module.css';
+const InputSelection = (props) => {
     const handleOnChange = (event, data) => {
         if (!_.isEmpty(props.input)) {
             props.input.onChange(event.target.value);
@@ -19,40 +19,39 @@ const InputNormal = (props) => {
         }
     };
 
-    const { input, meta, t, className, placeholder, label, ...rest } = props;
+    const { input, meta, t, className, placeholder, label, options, ...rest } = props;
     return (
         <div className={[ s.field, className ].join(' ')}>
             {_.isString(label) && <label htmlFor={input.name || props.name}>{t(label)}</label>}
-            <Input
-                {...input}
-                fluid
+            <Dropdown
                 placeholder={t(placeholder)}
-                arial-label={placeholder}
+                fluid
+                selection
+                options={_.map(options, ({ text, ...rest }) => ({ text: t(text), ...rest }))}
                 {...rest}
                 onChange={handleOnChange}
                 onBlur={handleOnBlur}
                 error={!_.isEmpty(meta.error) && meta.touched}
-                label={React.isValidElement(label) ? label : null}
             />
             {meta.error && meta.touched && <div className={s.validMessage}>{t(meta.error)}</div>}
         </div>
     );
 };
 
-InputNormal.propTypes = {
+InputSelection.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     propOnChange: PropTypes.func,
     name: PropTypes.string,
     input: PropTypes.object
 };
-InputNormal.defaultProps = {
+InputSelection.defaultProps = {
     name: null,
     input: {},
-    meta: {},
+    meta: { touched: true, error: 'error' },
     t: (text) => text,
     onChange: () => console.log('not set onCagne'),
     onBlur: () => console.log('not set onBlur')
 };
 
-export default InputNormal;
+export default InputSelection;
